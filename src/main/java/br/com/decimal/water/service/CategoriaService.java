@@ -2,24 +2,22 @@ package br.com.decimal.water.service;
 
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import br.com.decimal.water.entity.Categoria;
+import br.com.decimal.water.util.EntityManagerProvider;
 
 public class CategoriaService implements Service<Integer, Categoria> {
 
 	private static final Logger LOG = LogManager.getLogger(CategoriaService.class.getName());
 	
-	private EntityManagerFactory emf;
 	private EntityManager em;
 
 	public CategoriaService() {
-		emf = Persistence.createEntityManagerFactory("water");
-		em = emf.createEntityManager();
+		EntityManagerProvider provider = EntityManagerProvider.getInstance();
+		em = provider.createManager();
 		
 		LOG.warn( "EntityManager %b carregado com sucesso " , em != null );
 	}
