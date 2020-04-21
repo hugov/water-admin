@@ -1,16 +1,13 @@
 package br.com.decimal.water.service;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import br.com.decimal.water.entity.Categoria;
 
 public class CategoriaServiceTest {
-	
-	private static final Logger LOG = LogManager.getLogger(CategoriaServiceTest.class.getName());
 	
 	private CategoriaService service;
 	
@@ -22,7 +19,7 @@ public class CategoriaServiceTest {
 		
 		this.service.create(c1);
 		
-		Assertions.assertEquals(2, this.service.list().size());
+		assertEquals(2, this.service.list().size());
 	}
 	
 	@Test
@@ -30,17 +27,15 @@ public class CategoriaServiceTest {
 		Categoria c1 = new Categoria();
 		c1.setId(1);
 		
-		this.service.delete(c1);
+		this.service.delete(1);
 		
-		Assertions.assertEquals(1, this.service.list().size());
+		assertEquals(0, this.service.list().size());
 	}
 	
 	@BeforeEach
 	public void prepareTest() {
 		
 		this.service = new CategoriaService();
-		
-		LOG.info("Preparando os dados para o testes.");
 		
 		Categoria c1 = new Categoria();
 		c1.setDescricao("água");

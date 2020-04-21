@@ -4,15 +4,12 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import br.com.decimal.water.entity.Categoria;
 
-@PersistenceContext(name = "persistence/myStrutsJPA", unitName = "StrutsJPAPersistenceUnit", type = PersistenceContextType.EXTENDED)
 public class CategoriaService implements Service<Integer, Categoria> {
 
 	private static final Logger LOG = LogManager.getLogger(CategoriaService.class.getName());
@@ -52,16 +49,22 @@ public class CategoriaService implements Service<Integer, Categoria> {
 
 	@Override
 	public void update(Categoria entity) {
-		LOG.info("Atualizando uma categoria");
+		LOG.info("Atualizando um registro de categoria");
+		
 		em.getTransaction().begin();
 		em.persist(entity);
 		em.getTransaction().commit();
 	}
 
 	@Override
-	public void delete(Categoria entity) {
-		LOG.info("Apagando uma categoria");
-		em.remove(entity);
+	public void delete(Integer id) {
+		LOG.info("Apagando um registro de categoria");
+		
+		Categoria categoria = em.find(Categoria.class, id);
+		
+		em.getTransaction().begin();
+		em.remove(categoria);
+		em.getTransaction().commit();
 	}
 
 }
