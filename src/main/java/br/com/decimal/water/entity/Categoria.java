@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name="categoria")
+@Entity(name="Categoria")
 public class Categoria implements java.io.Serializable {
 
 	private static final long serialVersionUID = -3097075110496465745L;

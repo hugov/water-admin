@@ -19,6 +19,20 @@
   	
   	<dependencies>
 		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.2.0</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+	        <groupId>org.junit.platform</groupId>
+	        <artifactId>junit-platform-launcher</artifactId>
+	        <version>1.2.0</version>
+	        <scope>test</scope>
+    	</dependency>
+		
+		<dependency>
 		    <groupId>log4j</groupId>
 		    <artifactId>log4j</artifactId>
 		    <version>1.2.17</version>
@@ -35,20 +49,58 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.4.2.Final</version>
 		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.struts</groupId>
+		    <artifactId>struts2-core</artifactId>
+		    <version>2.5.22</version>
+		</dependency>
 
   	</dependencies>
 
 	<build>
+		
+		<finalName>water-admin</finalName>
+	
 		<plugins>
+		
+			<plugin>
+	            <groupId>org.eclipse.jetty</groupId>
+	            <artifactId>jetty-maven-plugin</artifactId>
+	            <version>9.4.28.v20200408</version>
+	            <configuration>
+	                <webApp>
+	                    <contextPath>/${project.build.finalName}</contextPath>
+	                </webApp>
+	                <stopKey>CTRL+C</stopKey>
+	                <stopPort>8999</stopPort>
+	                <scanIntervalSeconds>10</scanIntervalSeconds>
+	                <scanTargets>
+	                    <scanTarget>src/main/webapp/WEB-INF/web.xml</scanTarget>
+	                </scanTargets>
+	            </configuration>
+        	</plugin>
+		
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.6</version>
+				<version>3.2.3</version>
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
+
 		</plugins>
 	</build>
+
+	<reporting>
+        <plugins>
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>4.0.0</version>
+            </plugin>
+        </plugins>
+    </reporting>
 	
 </project>
