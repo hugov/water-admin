@@ -31,11 +31,38 @@
 	        <version>1.5.0</version>
 	        <scope>test</scope>
     	</dependency>
+
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-junit-plugin</artifactId>
+			<version>2.5.22</version>
+			<scope>test</scope>
+		</dependency>
 		
 		<dependency>
-		    <groupId>log4j</groupId>
-		    <artifactId>log4j</artifactId>
-		    <version>1.2.17</version>
+		    <groupId>javax.servlet.jsp</groupId>
+		    <artifactId>jsp-api</artifactId>
+		    <version>2.2</version>
+		    <scope>provided</scope>
+		</dependency>
+				
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>javax.servlet-api</artifactId>
+		    <version>4.0.1</version>
+		    <scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.13.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.13.1</version>
 		</dependency>
 		
 		<dependency>
@@ -61,7 +88,7 @@
 	<build>
 		
 		<finalName>water-admin</finalName>
-	
+
 		<plugins>
 		
 			<plugin>
@@ -112,7 +139,6 @@
 							<goal>prepare-agent</goal>
 						</goals>
 					</execution>
-					<!-- 
 					<execution>
 						<id>report</id>
 						<phase>prepare-package</phase>
@@ -120,15 +146,6 @@
 							<goal>report</goal>
 						</goals>
 					</execution>
-					 -->
-					<execution>
-						<id>report</id>
-						<phase>prepare-compile</phase>
-						<goals>
-							<goal>report</goal>
-						</goals>
-					</execution>
-					<!--
 					<execution>
                         <id>jacoco-report</id>
                         <phase>test</phase>
@@ -136,6 +153,7 @@
                             <goal>report</goal>
                         </goals>
                     </execution>
+					<!--
                     <execution>
                         <id>jacoco-check</id>
                         <goals>
@@ -161,6 +179,7 @@
 			</plugin>
 
 		</plugins>
+		
 	</build>
 
 	<reporting>
