@@ -12,10 +12,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Acts as a controller to handle actions related to editing a Person.
  * 
- * @author bruce phillips
- * @author antonio sánchez
+ * @author Vitor Hugo Oliveira
  */
 public class CategoriaAction extends ActionSupport implements Preparable {
     
@@ -24,50 +22,76 @@ public class CategoriaAction extends ActionSupport implements Preparable {
     
 	private CategoriaService service;
 	
+	private Integer id;
+	private Categoria categoria;
 	private List<Categoria> categoriaList;
+	private String submitType;
 	
     @Override
     public void prepare() throws Exception {
-
-    	// Busca as dependências para a classe funcionar
-    	
-        LOG.info("Prepared support data for Person entity.");
-        
         service = new CategoriaService();
-        
     }
 
     public String list() {
-        LOG.info("Listing persons");
+        LOG.info("Listando as categorias cadastradas .");
         
         categoriaList = service.list();
         
         return SUCCESS;
     }
     
-    public String save() {
-    	LOG.info("Executando o testes %d", 1);
+    public String create() {
+    	LOG.info("Cadastrando a categoria {} .", categoria);
     	
-    	Categoria categoria = new Categoria();
-		categoria.setDescricao("Água");
-		categoria.setSituacao(0);
-		
 		service.create(categoria);
     	
-//        if (person.getPersonId() == null) {
-//            personService.insertPerson(person);
-//            LOG.info("Created new Person: " + person);
-//        } else {
-//            personService.updatePerson(person);
-//            LOG.info("Updated Person: " + person);
-//        }
+        return SUCCESS;
+    }
+    
+    public String retrieve() {
+    	LOG.info("Recuperando a categoria {} .", id);
+    	
+		categoria = service.retrieve(id);
+    	
+        return SUCCESS;
+    }
+    
+    public String update() {
+    	
+    	if("updatedata".equals(submitType)) {
+        	categoria = service.retrieve(id);
+        	return INPUT;
+        } else {
+        	LOG.info("Atualizando a categoria {} .", categoria);
+        	service.update(categoria);
+        }
+    	
         return SUCCESS;
     }
 
     public String delete() {
-        LOG.info("Deleted Person: " + 1);
+        LOG.info("Apagando a categoria {} ." , id);
+        
+        service.delete(id);
+        
         return SUCCESS;
     }
+    
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 
 	public List<Categoria> getCategoriaList() {
 		return categoriaList;
@@ -75,6 +99,14 @@ public class CategoriaAction extends ActionSupport implements Preparable {
 
 	public void setCategoriaList(List<Categoria> categoriaList) {
 		this.categoriaList = categoriaList;
+	}
+
+	public String getSubmitType() {
+		return submitType;
+	}
+
+	public void setSubmitType(String submitType) {
+		this.submitType = submitType;
 	}
     
 }

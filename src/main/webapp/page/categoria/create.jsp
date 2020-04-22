@@ -1,3 +1,5 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 	
@@ -7,13 +9,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>App Water - Admin</title>
 		
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/style.css" rel="stylesheet">
+		<link href="./../../css/bootstrap.min.css" rel="stylesheet">
+		<link href="./../../css/style.css" rel="stylesheet">
 	</head>
 	
 	<body>
 		<script src="./../../js/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
+		<script src="./../../js/bootstrap.min.js"></script>
 
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container-fluid">
@@ -38,32 +40,40 @@
 			</div>
 		</nav>
 		
-		<!-- Modal -->
-		<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog"
-			aria-labelledby="modalLabel">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Fechar">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<h4 class="modal-title" id="modalLabel">Excluir Categoria</h4>
-					</div>
-					<div class="modal-body">Deseja realmente excluir este item?</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary">Sim</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+		<div id="main" class="container-fluid">
+ 			<h3 class="page-header">Adicionar Categoria</h3>
+
+			<form action="/water-admin/categoriaCreate.action">
+
+				<div class="row">
+					<div class="form-group col-md-4">
+						<label for="campo1">Descrição</label>
+						<input type="text" class="form-control" name="categoria.descricao">
 					</div>
 				</div>
-			</div>
+				
+				<div class="row">
+					<div class="form-group col-md-4">
+						<label for="campo1">Situação</label>
+						<select name="categoria.situacao" class="form-control">
+							<option value="" selected disabled hidden>Escolha uma situação</option>
+							<option value="1">Ativo</option>
+							<option value="0">Inativo</option>
+						</select>
+					</div>
+				</div>
+	
+				<hr />
+				<div id="actions" class="row">
+					<div class="col-md-12">
+						<button type="submit" class="btn btn-primary">Salvar</button>
+						<a href="categoriaList.action" class="btn btn-default">Cancelar</a>
+					</div>
+				</div>
+			</form>
+			
 		</div>
-		<!-- /.modal -->
-		
-		<div id="main" class="container-fluid">
 
-		
-		</div>
 	</body>
 	
 </html>

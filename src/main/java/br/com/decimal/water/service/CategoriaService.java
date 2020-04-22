@@ -18,8 +18,6 @@ public class CategoriaService implements Service<Integer, Categoria> {
 	public CategoriaService() {
 		EntityManagerProvider provider = EntityManagerProvider.getInstance();
 		em = provider.createManager();
-		
-		LOG.warn( "EntityManager %b carregado com sucesso " , em != null );
 	}
 
 	@SuppressWarnings("unchecked")
@@ -49,8 +47,12 @@ public class CategoriaService implements Service<Integer, Categoria> {
 	public void update(Categoria entity) {
 		LOG.info("Atualizando um registro de categoria");
 		
+		Categoria categoria = em.find(Categoria.class, entity.getId());
+		categoria.setDescricao(entity.getDescricao());
+		categoria.setSituacao(entity.getSituacao());
+		
 		em.getTransaction().begin();
-		em.persist(entity);
+		em.persist(categoria);
 		em.getTransaction().commit();
 	}
 

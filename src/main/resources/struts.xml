@@ -10,6 +10,7 @@
 
     <package name="default" namespace="/" extends="struts-default" >
 	
+	<!-- 
         <interceptors>
             <interceptor-stack name="appDefault">
                 <interceptor-ref name="paramsPrepareParamsStack">
@@ -21,17 +22,32 @@
         </interceptors>
 
         <default-interceptor-ref name="appDefault" />
-
         <default-action-ref name="index"/>
 
         <action name="index" class="br.com.decimal.water.action.CategoriaAction" method="list">
             <result name="success">/index.jsp</result>
             <interceptor-ref name="basicStack"/>
         </action>
+ -->
+        <action name="categoriaList" class="br.com.decimal.water.action.CategoriaAction" method="list">
+            <result name="success">/page/categoria/list.jsp</result>
+        </action>
         
-        <action name="categoria!*" class="br.com.decimal.water.action.CategoriaAction" method="{1}">
-            <result name="input">/WEB-INF/jsp/editPerson.jsp</result>
-            <result name="success" type="redirectAction">index</result>
+        <action name="categoriaCreate" class="br.com.decimal.water.action.CategoriaAction" method="create">
+            <result name="success" type="redirect">categoriaList</result>
+        </action>
+        
+        <action name="categoriaRetrieve" class="br.com.decimal.water.action.CategoriaAction" method="retrieve">
+            <result name="success">/page/categoria/retrieve.jsp</result>
+        </action>
+        
+        <action name="categoriaUpdate" class="br.com.decimal.water.action.CategoriaAction" method="update">
+            <result name="input">/page/categoria/update.jsp</result>
+            <result name="success" type="redirect">categoriaList</result>
+        </action>
+        
+        <action name="categoriaDelete" class="br.com.decimal.water.action.CategoriaAction" method="delete">
+            <result name="success" type="redirect">categoriaList</result>
         </action>
     </package>
 
