@@ -1,6 +1,13 @@
 package br.com.decimal.water.entity;
 
-public class Endereco {
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+
+@Entity(name="Endereco")
+public class Endereco implements Serializable {
+
+	private static final long serialVersionUID = 4788936467618005488L;
 
 	private Integer id;
 	private String logradouro;

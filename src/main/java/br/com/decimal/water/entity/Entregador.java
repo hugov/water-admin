@@ -1,10 +1,18 @@
 package br.com.decimal.water.entity;
 
-public class Entregador {
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+
+@Entity(name="Entregador")
+public class Entregador implements Serializable {
+
+	private static final long serialVersionUID = -3782267884885702040L;
 
 	private Integer id;
 	private String nome;
 	private String cpf;
+	private Endereco endereco;
 
 	public Integer getId() {
 		return id;
@@ -30,4 +38,12 @@ public class Entregador {
 		this.cpf = cpf;
 	}
 
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+	
 }

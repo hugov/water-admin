@@ -1,6 +1,13 @@
 package br.com.decimal.water.entity;
 
-public class Preco {
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+
+@Entity(name="Preco")
+public class Preco implements Serializable {
+
+	private static final long serialVersionUID = 5318575654662614044L;
 
 	private Integer id;
 	private Double valor;

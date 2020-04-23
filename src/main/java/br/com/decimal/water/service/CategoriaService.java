@@ -23,15 +23,15 @@ public class CategoriaService implements Service<Integer, Categoria> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Categoria> list() {
-		LOG.info("Listando os registro de categoria cadastrados.");
+		LOG.info("Listando os registros de categorias cadastrados.");
 		
 		return em.createQuery("SELECT c FROM Categoria c").getResultList();
-	    
 	}
 
 	@Override
 	public void create(Categoria entity) {
-		LOG.info("Criando um registro de categoria.");
+		LOG.info("Criando um registro de {} .", entity);
+		
 		em.getTransaction().begin();
 		em.persist(entity);
 		em.getTransaction().commit();
@@ -39,13 +39,15 @@ public class CategoriaService implements Service<Integer, Categoria> {
 
 	@Override
 	public Categoria retrieve(Integer id) {
-		LOG.info("Recuperando um registro de categoria.");
-		return em.find(Categoria.class, id);
+		Categoria categoria = em.find(Categoria.class, id);
+		LOG.info("O id {} pertence ao registro de {} .", id, categoria);
+
+		return categoria;
 	}
 
 	@Override
 	public void update(Categoria entity) {
-		LOG.info("Atualizando um registro de categoria");
+		LOG.info("Atualizando o registro de {} ", entity);
 		
 		Categoria categoria = em.find(Categoria.class, entity.getId());
 		categoria.setDescricao(entity.getDescricao());
@@ -58,7 +60,7 @@ public class CategoriaService implements Service<Integer, Categoria> {
 
 	@Override
 	public void delete(Integer id) {
-		LOG.info("Apagando um registro de categoria");
+		LOG.info("Apagando o registro de categoria, com id {}", id);
 		
 		Categoria categoria = em.find(Categoria.class, id);
 		

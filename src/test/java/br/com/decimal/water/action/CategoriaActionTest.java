@@ -8,10 +8,10 @@ public class CategoriaActionTest extends StrutsTestCase {
 	
 	@Test
 	public void testGetActionMapping() {
-        ActionMapping mapping = getActionMapping("/water-admin/categoria!list.action");
+        ActionMapping mapping = getActionMapping("/categoriaList.action");
         assertNotNull(mapping);
-        assertEquals("/admin", mapping.getNamespace());
-        assertEquals("categoria!list.action", mapping.getName());
+        assertEquals("/water-admin", mapping.getNamespace());
+        assertEquals("categoriaList.action", mapping.getName());
     }
 
 }

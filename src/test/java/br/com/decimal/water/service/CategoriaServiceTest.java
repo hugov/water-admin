@@ -2,11 +2,6 @@ package br.com.decimal.water.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
@@ -22,13 +17,6 @@ public class CategoriaServiceTest {
 	
 	@BeforeEach
 	public void prepareTest() {
-		try {
-			Files.copy(Paths.get("target/classes/META-INF/persistence.xml"),  // Origem
-					Paths.get("target/test-classes/META-INF/persistence.xml"), // Destino
-					StandardCopyOption.REPLACE_EXISTING);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		this.service = new CategoriaService();
 	}
 	

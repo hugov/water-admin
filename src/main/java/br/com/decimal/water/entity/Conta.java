@@ -1,6 +1,13 @@
 package br.com.decimal.water.entity;
 
-public class Conta {
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+
+@Entity(name="Conta")
+public class Conta implements Serializable {
+
+	private static final long serialVersionUID = -1396502373205223929L;
 
 	private Integer id;
 	private String nome;

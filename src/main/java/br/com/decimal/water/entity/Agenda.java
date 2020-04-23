@@ -1,8 +1,14 @@
 package br.com.decimal.water.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Agenda {
+import javax.persistence.Entity;
+
+@Entity(name="Agenda")
+public class Agenda implements Serializable {
+
+	private static final long serialVersionUID = 5260449014560304501L;
 
 	private Integer id;
 	private Date vigenciaInicial;
@@ -17,19 +23,19 @@ public class Agenda {
 	}
 
 	public Date getVigenciaInicial() {
-		return vigenciaInicial;
+		return (Date) vigenciaInicial.clone();
 	}
 
 	public void setVigenciaInicial(Date vigenciaInicial) {
-		this.vigenciaInicial = vigenciaInicial;
+		this.vigenciaInicial = (Date) vigenciaInicial.clone();
 	}
 
 	public Date getVigenciaFinal() {
-		return vigenciaFinal;
+		return (Date) vigenciaFinal.clone();
 	}
 
 	public void setVigenciaFinal(Date vigenciaFinal) {
-		this.vigenciaFinal = vigenciaFinal;
+		this.vigenciaFinal = (Date) vigenciaFinal.clone();
 	}
 
 }
