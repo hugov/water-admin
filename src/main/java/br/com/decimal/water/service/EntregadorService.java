@@ -39,10 +39,10 @@ public class EntregadorService implements Service<Integer, Entregador> {
 
 	@Override
 	public Entregador retrieve(Integer id) {
-		Entregador categoria = em.find(Entregador.class, id);
-		LOG.info("O id {} pertence ao registro de {} .", id, categoria);
+		Entregador entregador = em.find(Entregador.class, id);
+		LOG.info("O id {} pertence ao registro de {} .", id, entregador);
 
-		return categoria;
+		return entregador;
 	}
 
 	@Override

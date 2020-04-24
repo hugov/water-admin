@@ -39,10 +39,10 @@ public class ContaService implements Service<Integer, Conta> {
 
 	@Override
 	public Conta retrieve(Integer id) {
-		Conta categoria = em.find(Conta.class, id);
-		LOG.info("O id {} pertence ao registro de {} .", id, categoria);
+		Conta conta = em.find(Conta.class, id);
+		LOG.info("O id {} pertence ao registro de {} .", id, conta);
 
-		return categoria;
+		return conta;
 	}
 
 	@Override

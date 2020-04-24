@@ -39,10 +39,10 @@ public class PerfilService implements Service<Integer, Perfil> {
 
 	@Override
 	public Perfil retrieve(Integer id) {
-		Perfil categoria = em.find(Perfil.class, id);
-		LOG.info("O id {} pertence ao registro de {} .", id, categoria);
+		Perfil perfil = em.find(Perfil.class, id);
+		LOG.info("O id {} pertence ao registro de {} .", id, perfil);
 
-		return categoria;
+		return perfil;
 	}
 
 	@Override

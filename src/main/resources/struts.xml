@@ -29,6 +29,8 @@
             <interceptor-ref name="basicStack"/>
         </action>
  -->
+        <!-- Cadastro de categoria -->
+        
         <action name="categoriaList" class="br.com.decimal.water.action.CategoriaAction" method="list">
             <result name="success">/page/categoria/list.jsp</result>
         </action>
@@ -49,6 +51,30 @@
         <action name="categoriaDelete" class="br.com.decimal.water.action.CategoriaAction" method="delete">
             <result name="success" type="redirect">categoriaList</result>
         </action>
+        
+        <!-- Cadastro de funcionalidade -->
+        
+        <action name="funcionalidadeList" class="br.com.decimal.water.action.FuncionalidadeAction" method="list">
+            <result name="success">/page/funcionalidade/list.jsp</result>
+        </action>
+        
+        <action name="funcionalidadeCreate" class="br.com.decimal.water.action.FuncionalidadeAction" method="create">
+            <result name="success" type="redirect">funcionalidadeList</result>
+        </action>
+        
+        <action name="funcionalidadeRetrieve" class="br.com.decimal.water.action.FuncionalidadeAction" method="retrieve">
+            <result name="success">/page/funcionalidade/retrieve.jsp</result>
+        </action>
+        
+        <action name="funcionalidadeUpdate" class="br.com.decimal.water.action.FuncionalidadeAction" method="update">
+            <result name="input">/page/funcionalidade/update.jsp</result>
+            <result name="success" type="redirect">funcionalidadeList</result>
+        </action>
+        
+        <action name="funcionalidadeDelete" class="br.com.decimal.water.action.FuncionalidadeAction" method="delete">
+            <result name="success" type="redirect">funcionalidadeList</result>
+        </action>
+        
     </package>
 
 </struts>

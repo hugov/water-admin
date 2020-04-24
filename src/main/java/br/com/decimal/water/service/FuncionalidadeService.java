@@ -39,22 +39,22 @@ public class FuncionalidadeService implements Service<Integer, Funcionalidade> {
 
 	@Override
 	public Funcionalidade retrieve(Integer id) {
-		Funcionalidade categoria = em.find(Funcionalidade.class, id);
-		LOG.info("O id {} pertence ao registro de {} .", id, categoria);
+		Funcionalidade funcionalidade = em.find(Funcionalidade.class, id);
+		LOG.info("O id {} pertence ao registro de {} .", id, funcionalidade);
 
-		return categoria;
+		return funcionalidade;
 	}
 
 	@Override
 	public void update(Funcionalidade entity) {
 		LOG.info("Atualizando o registro de {} ", entity);
 		
-		Funcionalidade categoria = em.find(Funcionalidade.class, entity.getId());
-		categoria.setDescricao(entity.getDescricao());
-		categoria.setSituacao(entity.getSituacao());
+		Funcionalidade funcionalidade = em.find(Funcionalidade.class, entity.getId());
+		funcionalidade.setDescricao(entity.getDescricao());
+		funcionalidade.setSituacao(entity.getSituacao());
 		
 		em.getTransaction().begin();
-		em.persist(categoria);
+		em.persist(funcionalidade);
 		em.getTransaction().commit();
 	}
 
