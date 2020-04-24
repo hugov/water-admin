@@ -8,6 +8,11 @@
 	
 	<display-name>water-admin</display-name>
 	
+	<error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/page/erro/error.jsp</location>
+    </error-page>
+	
 	<welcome-file-list>
 		<welcome-file>index</welcome-file>
 	</welcome-file-list>

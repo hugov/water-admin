@@ -2,6 +2,10 @@ package br.com.decimal.water.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
@@ -23,6 +27,13 @@ public class CategoriaServiceTest {
 	@Test
 	@Order(1)
 	public void testCreateCatergoria() {
+		
+	    EntityManagerFactory emf = Persistence.createEntityManagerFactory("water");
+	    EntityManager em = emf.createEntityManager();
+	    
+	    System.out.println(emf);
+	    System.out.println(em);
+		
 		Categoria c1 = new Categoria();
 		c1.setDescricao("gás");
 		c1.setSituacao(0);

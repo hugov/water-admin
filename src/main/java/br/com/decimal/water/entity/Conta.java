@@ -2,14 +2,22 @@ package br.com.decimal.water.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity(name="Conta")
 public class Conta implements Serializable {
 
 	private static final long serialVersionUID = -1396502373205223929L;
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "id")
 	private Integer id;
+	
 	private String nome;
 	private String usuario;
 	private String senha;

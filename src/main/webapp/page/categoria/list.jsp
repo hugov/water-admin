@@ -11,6 +11,23 @@
 		
 		<link href="./css/bootstrap.min.css" rel="stylesheet">
 		<link href="./css/style.css" rel="stylesheet">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		
+		<!-- Add to homescreen for Chrome on Android -->
+	    <meta name="mobile-web-app-capable" content="yes">
+	    <link rel="icon" sizes="192x192" href="favicon.ico">
+	    <meta name="theme-color" content="#EB1E25">
+	
+	    <!-- Add to homescreen for Safari on iOS -->
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-title" content="QRCode Mobile">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	    <link rel="apple-touch-icon-precomposed" href="favicon.ico">
+	
+	    <!-- Tile icon for Win8 (144x144 + tile color) -->
+	    <meta name="msapplication-TileImage" content="favicon.ico">
+	    <meta name="msapplication-TileColor" content="#EB1E25">
+		
 	</head>
 	
 	<body>

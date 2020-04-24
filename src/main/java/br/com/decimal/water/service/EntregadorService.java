@@ -6,30 +6,30 @@ import javax.persistence.EntityManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import br.com.decimal.water.entity.Categoria;
+import br.com.decimal.water.entity.Entregador;
 import br.com.decimal.water.util.EntityManagerProvider;
 
-public class CategoriaService implements Service<Integer, Categoria> {
+public class EntregadorService implements Service<Integer, Entregador> {
 
-	private static final Logger LOG = LogManager.getLogger(CategoriaService.class.getName());
+	private static final Logger LOG = LogManager.getLogger(EntregadorService.class.getName());
 	
 	private EntityManager em;
 
-	public CategoriaService() {
+	public EntregadorService() {
 		EntityManagerProvider provider = EntityManagerProvider.getInstance();
 		em = provider.createManager();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Categoria> list() {
-		LOG.info("Listando os registros de categorias cadastrados.");
+	public List<Entregador> list() {
+		LOG.info("Listando os registros de entregadores cadastrados.");
 		
-		return em.createQuery("SELECT c FROM Categoria c").getResultList();
+		return em.createQuery("SELECT c FROM Entregador c").getResultList();
 	}
 
 	@Override
-	public void create(Categoria entity) {
+	public void create(Entregador entity) {
 		LOG.info("Criando um registro de {} .", entity);
 		
 		em.getTransaction().begin();
@@ -38,23 +38,25 @@ public class CategoriaService implements Service<Integer, Categoria> {
 	}
 
 	@Override
-	public Categoria retrieve(Integer id) {
-		Categoria categoria = em.find(Categoria.class, id);
+	public Entregador retrieve(Integer id) {
+		Entregador categoria = em.find(Entregador.class, id);
 		LOG.info("O id {} pertence ao registro de {} .", id, categoria);
 
 		return categoria;
 	}
 
 	@Override
-	public void update(Categoria entity) {
+	public void update(Entregador entity) {
 		LOG.info("Atualizando o registro de {} ", entity);
 		
-		Categoria categoria = em.find(Categoria.class, entity.getId());
-		categoria.setDescricao(entity.getDescricao());
-		categoria.setSituacao(entity.getSituacao());
+		Entregador entregador = em.find(Entregador.class, entity.getId());
+
+		//FIXME: Copiar os valores para outro objeto
+		//entregador.setDescricao(entity.getDescricao());
+		//entregador.setSituacao(entity.getSituacao());
 		
 		em.getTransaction().begin();
-		em.persist(categoria);
+		em.persist(entregador);
 		em.getTransaction().commit();
 	}
 
@@ -62,10 +64,10 @@ public class CategoriaService implements Service<Integer, Categoria> {
 	public void delete(Integer id) {
 		LOG.info("Apagando o registro de id {}", id);
 		
-		Categoria categoria = em.find(Categoria.class, id);
+		Entregador entregador = em.find(Entregador.class, id);
 		
 		em.getTransaction().begin();
-		em.remove(categoria);
+		em.remove(entregador);
 		em.getTransaction().commit();
 	}
 

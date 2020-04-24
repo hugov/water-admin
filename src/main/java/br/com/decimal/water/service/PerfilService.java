@@ -6,30 +6,30 @@ import javax.persistence.EntityManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import br.com.decimal.water.entity.Categoria;
+import br.com.decimal.water.entity.Perfil;
 import br.com.decimal.water.util.EntityManagerProvider;
 
-public class CategoriaService implements Service<Integer, Categoria> {
+public class PerfilService implements Service<Integer, Perfil> {
 
-	private static final Logger LOG = LogManager.getLogger(CategoriaService.class.getName());
+	private static final Logger LOG = LogManager.getLogger(PerfilService.class.getName());
 	
 	private EntityManager em;
 
-	public CategoriaService() {
+	public PerfilService() {
 		EntityManagerProvider provider = EntityManagerProvider.getInstance();
 		em = provider.createManager();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Categoria> list() {
-		LOG.info("Listando os registros de categorias cadastrados.");
+	public List<Perfil> list() {
+		LOG.info("Listando os registros de perfis cadastrados.");
 		
-		return em.createQuery("SELECT c FROM Categoria c").getResultList();
+		return em.createQuery("SELECT c FROM Perfil c").getResultList();
 	}
 
 	@Override
-	public void create(Categoria entity) {
+	public void create(Perfil entity) {
 		LOG.info("Criando um registro de {} .", entity);
 		
 		em.getTransaction().begin();
@@ -38,23 +38,25 @@ public class CategoriaService implements Service<Integer, Categoria> {
 	}
 
 	@Override
-	public Categoria retrieve(Integer id) {
-		Categoria categoria = em.find(Categoria.class, id);
+	public Perfil retrieve(Integer id) {
+		Perfil categoria = em.find(Perfil.class, id);
 		LOG.info("O id {} pertence ao registro de {} .", id, categoria);
 
 		return categoria;
 	}
 
 	@Override
-	public void update(Categoria entity) {
+	public void update(Perfil entity) {
 		LOG.info("Atualizando o registro de {} ", entity);
 		
-		Categoria categoria = em.find(Categoria.class, entity.getId());
-		categoria.setDescricao(entity.getDescricao());
-		categoria.setSituacao(entity.getSituacao());
+		Perfil perfil = em.find(Perfil.class, entity.getId());
+
+		//FIXME: Copiar os valores para outro objeto
+		//entregador.setDescricao(entity.getDescricao());
+		//entregador.setSituacao(entity.getSituacao());
 		
 		em.getTransaction().begin();
-		em.persist(categoria);
+		em.persist(perfil);
 		em.getTransaction().commit();
 	}
 
@@ -62,10 +64,10 @@ public class CategoriaService implements Service<Integer, Categoria> {
 	public void delete(Integer id) {
 		LOG.info("Apagando o registro de id {}", id);
 		
-		Categoria categoria = em.find(Categoria.class, id);
+		Perfil perfil = em.find(Perfil.class, id);
 		
 		em.getTransaction().begin();
-		em.remove(categoria);
+		em.remove(perfil);
 		em.getTransaction().commit();
 	}
 

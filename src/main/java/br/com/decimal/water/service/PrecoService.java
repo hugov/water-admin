@@ -6,30 +6,30 @@ import javax.persistence.EntityManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import br.com.decimal.water.entity.Produto;
+import br.com.decimal.water.entity.Preco;
 import br.com.decimal.water.util.EntityManagerProvider;
 
-public class ProdutoService implements Service<Integer, Produto> {
+public class PrecoService implements Service<Integer, Preco> {
 
-	private static final Logger LOG = LogManager.getLogger(ProdutoService.class.getName());
+	private static final Logger LOG = LogManager.getLogger(PrecoService.class.getName());
 	
 	private EntityManager em;
 
-	public ProdutoService() {
+	public PrecoService() {
 		EntityManagerProvider provider = EntityManagerProvider.getInstance();
 		em = provider.createManager();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Produto> list() {
-		LOG.info("Listando os registros de produtos cadastrados.");
+	public List<Preco> list() {
+		LOG.info("Listando os registros de preços cadastrados.");
 		
-		return em.createQuery("SELECT c FROM Produto c").getResultList();
+		return em.createQuery("SELECT c FROM Preco c").getResultList();
 	}
 
 	@Override
-	public void create(Produto entity) {
+	public void create(Preco entity) {
 		LOG.info("Criando um registro de {} .", entity);
 		
 		em.getTransaction().begin();
@@ -38,23 +38,24 @@ public class ProdutoService implements Service<Integer, Produto> {
 	}
 
 	@Override
-	public Produto retrieve(Integer id) {
-		Produto produto = em.find(Produto.class, id);
-		LOG.info("O id {} pertence ao registro de produto {} .", id, produto);
+	public Preco retrieve(Integer id) {
+		Preco preco = em.find(Preco.class, id);
+		LOG.info("O id {} pertence ao registro de {} .", id, preco);
 
-		return produto;
+		return preco;
 	}
 
 	@Override
-	public void update(Produto entity) {
+	public void update(Preco entity) {
 		LOG.info("Atualizando o registro de {} ", entity);
 		
-		Produto produto = em.find(Produto.class, entity.getId());
-		produto.setDescricao(entity.getDescricao());
-		produto.setSituacao(entity.getSituacao());
+		Preco preco = em.find(Preco.class, entity.getId());
+		//FIXME: Corrigir
+		//categoria.setDescricao(entity.getDescricao());
+		//categoria.setSituacao(entity.getSituacao());
 		
 		em.getTransaction().begin();
-		em.persist(produto);
+		em.persist(preco);
 		em.getTransaction().commit();
 	}
 
@@ -62,10 +63,10 @@ public class ProdutoService implements Service<Integer, Produto> {
 	public void delete(Integer id) {
 		LOG.info("Apagando o registro de id {}", id);
 		
-		Produto produto = em.find(Produto.class, id);
+		Preco preco = em.find(Preco.class, id);
 		
 		em.getTransaction().begin();
-		em.remove(produto);
+		em.remove(preco);
 		em.getTransaction().commit();
 	}
 
