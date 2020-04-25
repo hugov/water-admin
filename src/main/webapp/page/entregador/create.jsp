@@ -41,21 +41,64 @@
 		</nav>
 		
 		<div id="main" class="container-fluid">
- 			<h3 class="page-header">Adicionar Categoria</h3>
+ 			<h3 class="page-header">Adicionar Entregador</h3>
 
-			<form action="/water-admin/categoriaCreate.action">
+			<form action="/water-admin/entregadorCreate.action">
 
 				<div class="row">
 					<div class="form-group col-md-4">
-						<label for="campo1">Descrição</label>
-						<input type="text" class="form-control" name="categoria.descricao">
+						<label for="campo1">Nome</label>
+						<input type="text" class="form-control" name="entregador.nome">
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="form-group col-md-6">
+						<label for="campo1">CPF</label>
+						<input type="text" class="form-control" name="entregador.cpf">
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="campo1">E-mail</label>
+						<input type="text" class="form-control" name="entregador.email">
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="form-group col-md-6">
+						<label for="campo1">CEP</label>
+						<input type="text" class="form-control" name="entregador.endereco.cep">
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="form-group col-md-6">
+						<label for="campo1">Logradouro</label>
+						<input type="text" class="form-control" name="entregador.endereco.logradouro">
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label for="campo1">Complemento</label>
+						<input type="text" class="form-control" name="entregador.endereco.complemento">
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="form-group col-md-6">
+						<label for="campo1">Bairro</label>
+						<input type="text" class="form-control" name="entregador.endereco.bairro">
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label for="campo1">Cidade</label>
+						<input type="text" class="form-control" name="entregador.endereco.cidade">
 					</div>
 				</div>
 				
 				<div class="row">
 					<div class="form-group col-md-4">
 						<label for="campo1">Situação</label>
-						<select name="categoria.situacao" class="form-control">
+						<select name="entregador.situacao" class="form-control">
 							<option value="" selected disabled hidden>Escolha uma situação</option>
 							<option value="1">Ativo</option>
 							<option value="0">Inativo</option>
@@ -67,7 +110,7 @@
 				<div id="actions" class="row">
 					<div class="col-md-12">
 						<button type="submit" class="btn btn-primary">Salvar</button>
-						<a href="./categoriaList.action" class="btn btn-default">Cancelar</a>
+						<a href="entregadorList.action" class="btn btn-default">Cancelar</a>
 					</div>
 				</div>
 			</form>

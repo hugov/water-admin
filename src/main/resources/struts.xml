@@ -75,6 +75,29 @@
             <result name="success" type="redirect">funcionalidadeList</result>
         </action>
         
+        <!-- Cadastro de entregador -->
+        
+        <action name="entregadorList" class="br.com.decimal.water.action.EntregadorAction" method="list">
+            <result name="success">/page/entregador/list.jsp</result>
+        </action>
+        
+        <action name="entregadorCreate" class="br.com.decimal.water.action.EntregadorAction" method="create">
+            <result name="success" type="redirect">entregadorList</result>
+        </action>
+        
+        <action name="entregadorRetrieve" class="br.com.decimal.water.action.EntregadorAction" method="retrieve">
+            <result name="success">/page/entregador/retrieve.jsp</result>
+        </action>
+        
+        <action name="entregadorUpdate" class="br.com.decimal.water.action.EntregadorAction" method="update">
+            <result name="input">/page/entregador/update.jsp</result>
+            <result name="success" type="redirect">entregadorList</result>
+        </action>
+        
+        <action name="entregadorDelete" class="br.com.decimal.water.action.EntregadorAction" method="delete">
+            <result name="success" type="redirect">entregadorList</result>
+        </action>
+        
     </package>
 
 </struts>

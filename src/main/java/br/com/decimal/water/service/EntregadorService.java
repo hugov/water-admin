@@ -1,11 +1,13 @@
 package br.com.decimal.water.service;
 
 import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import br.com.decimal.water.entity.Endereco;
 import br.com.decimal.water.entity.Entregador;
 import br.com.decimal.water.util.EntityManagerProvider;
 
@@ -51,9 +53,19 @@ public class EntregadorService implements Service<Integer, Entregador> {
 		
 		Entregador entregador = em.find(Entregador.class, entity.getId());
 
-		//FIXME: Copiar os valores para outro objeto
-		//entregador.setDescricao(entity.getDescricao());
-		//entregador.setSituacao(entity.getSituacao());
+		entregador.setNome(entity.getNome());
+		entregador.setCpf(entity.getCpf());
+		entregador.setEmail(entity.getEmail());
+		entregador.setSituacao(entity.getSituacao());
+
+		Endereco endereco = entregador.getEndereco();
+		Endereco enderecoEntity = entity.getEndereco();
+		
+		endereco.setCep(enderecoEntity.getCep());
+		endereco.setLogradouro(enderecoEntity.getLogradouro());
+		endereco.setComplemento(enderecoEntity.getComplemento());
+		endereco.setBairro(enderecoEntity.getBairro());
+		endereco.setCidade(enderecoEntity.getCidade());
 		
 		em.getTransaction().begin();
 		em.persist(entregador);
