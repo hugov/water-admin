@@ -20,15 +20,16 @@
                 </interceptor-ref>
             </interceptor-stack>
         </interceptors>
-
+        
         <default-interceptor-ref name="appDefault" />
+
+ -->
         <default-action-ref name="index"/>
 
-        <action name="index" class="br.com.decimal.water.action.CategoriaAction" method="list">
+        <action name="index" class="br.com.decimal.water.action.IndexAction" method="init">
             <result name="success">/index.jsp</result>
-            <interceptor-ref name="basicStack"/>
         </action>
- -->
+        
         <!-- Cadastro de conta -->
         
         <action name="contaList" class="br.com.decimal.water.action.ContaAction" method="list">
