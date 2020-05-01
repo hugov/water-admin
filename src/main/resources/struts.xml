@@ -29,6 +29,29 @@
             <interceptor-ref name="basicStack"/>
         </action>
  -->
+        <!-- Cadastro de conta -->
+        
+        <action name="contaList" class="br.com.decimal.water.action.ContaAction" method="list">
+            <result name="success">/page/conta/list.jsp</result>
+        </action>
+        
+        <action name="contaCreate" class="br.com.decimal.water.action.ContaAction" method="create">
+            <result name="success" type="redirect">contaList</result>
+        </action>
+        
+        <action name="contaRetrieve" class="br.com.decimal.water.action.ContaAction" method="retrieve">
+            <result name="success">/page/conta/retrieve.jsp</result>
+        </action>
+        
+        <action name="contaUpdate" class="br.com.decimal.water.action.ContaAction" method="update">
+            <result name="input">/page/conta/update.jsp</result>
+            <result name="success" type="redirect">contaList</result>
+        </action>
+        
+        <action name="contaDelete" class="br.com.decimal.water.action.ContaAction" method="delete">
+            <result name="success" type="redirect">contaList</result>
+        </action>
+        
         <!-- Cadastro de categoria -->
         
         <action name="categoriaList" class="br.com.decimal.water.action.CategoriaAction" method="list">

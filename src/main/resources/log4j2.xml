@@ -17,11 +17,11 @@
 		</RollingFile>
 	</Appenders>
 	<Loggers>
-		<Logger name="br.com.decimal" level="trace" additivity="false">
+		<Logger name="br.com.decimal" level="info" additivity="false">
 			<AppenderRef ref="LogToConsole" />
 			<AppenderRef ref="LogToRollingFile" />
 		</Logger>
-		<Root level="trace">
+		<Root level="info">
 			<AppenderRef ref="LogToConsole" />
 		</Root>
 	</Loggers>

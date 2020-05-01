@@ -1,7 +1,6 @@
 package br.com.decimal.water.entity;
 
 import java.io.Serializable;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +20,7 @@ public class Perfil implements Serializable {
 	private String descricao;
 	
 	//@OneToMany(mappedBy = "perfil")
-    private Set<PerfilFuncionalidade> perfilFuncionalidade;
+    //private Set<PerfilFuncionalidade> perfilFuncionalidade;
 	
 	private Integer situacao;
 
@@ -39,14 +38,6 @@ public class Perfil implements Serializable {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-
-	public Set<PerfilFuncionalidade> getPerfilFuncionalidade() {
-		return perfilFuncionalidade;
-	}
-
-	public void setPerfilFuncionalidade(Set<PerfilFuncionalidade> perfilFuncionalidade) {
-		this.perfilFuncionalidade = perfilFuncionalidade;
 	}
 
 	public Integer getSituacao() {

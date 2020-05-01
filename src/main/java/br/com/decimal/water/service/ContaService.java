@@ -50,9 +50,10 @@ public class ContaService implements Service<Integer, Conta> {
 		LOG.info("Atualizando o registro de {} ", entity);
 		
 		Conta conta = em.find(Conta.class, entity.getId());
-		//FIXME: Corrigir
-		//categoria.setDescricao(entity.getDescricao());
-		//categoria.setSituacao(entity.getSituacao());
+		conta.setNome(entity.getNome());
+		conta.setSenha(entity.getSenha());
+		conta.setUsuario(entity.getUsuario());
+		conta.setSituacao(entity.getSituacao());
 		
 		em.getTransaction().begin();
 		em.persist(conta);

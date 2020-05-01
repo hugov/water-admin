@@ -21,6 +21,7 @@ public class Conta implements Serializable {
 	private String nome;
 	private String usuario;
 	private String senha;
+	private String situacao;
 
 	public Integer getId() {
 		return id;
@@ -52,6 +53,14 @@ public class Conta implements Serializable {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(String situacao) {
+		this.situacao = situacao;
 	}
 
 }

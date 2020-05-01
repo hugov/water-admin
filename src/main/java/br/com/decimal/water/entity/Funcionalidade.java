@@ -1,14 +1,12 @@
 package br.com.decimal.water.entity;
 
 import java.io.Serializable;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity(name="Funcionalidade")
 public class Funcionalidade implements Serializable {
@@ -23,8 +21,8 @@ public class Funcionalidade implements Serializable {
 	@Column(name = "descricao")
 	private String descricao;
 	
-	@OneToMany(mappedBy = "funcionalidade")
-    private Set<PerfilFuncionalidade> perfilFuncionalidade;
+	//@OneToMany(mappedBy = "funcionalidade")
+    //private Set<PerfilFuncionalidade> perfilFuncionalidade;
 	
 	@Column(name = "situacao")
 	private Integer situacao;
