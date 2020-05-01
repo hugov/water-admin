@@ -19,9 +19,6 @@ public class Perfil implements Serializable {
 	private Integer id;
 	private String descricao;
 	
-	//@OneToMany(mappedBy = "perfil")
-    //private Set<PerfilFuncionalidade> perfilFuncionalidade;
-	
 	private Integer situacao;
 
 	public Integer getId() {

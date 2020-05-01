@@ -21,9 +21,6 @@ public class Funcionalidade implements Serializable {
 	@Column(name = "descricao")
 	private String descricao;
 	
-	//@OneToMany(mappedBy = "funcionalidade")
-    //private Set<PerfilFuncionalidade> perfilFuncionalidade;
-	
 	@Column(name = "situacao")
 	private Integer situacao;
 
