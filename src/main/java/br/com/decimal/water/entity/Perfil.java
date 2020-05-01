@@ -1,7 +1,7 @@
 package br.com.decimal.water.entity;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,9 +18,11 @@ public class Perfil implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "id")
 	private Integer id;
+	private String descricao;
 	
+	//@OneToMany(mappedBy = "perfil")
+    private Set<PerfilFuncionalidade> perfilFuncionalidade;
 	
-	private  transient List<Funcionalidade> listaFuncionalidade;
 	private Integer situacao;
 
 	public Integer getId() {
@@ -30,13 +32,21 @@ public class Perfil implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-	public List<Funcionalidade> getListaFuncionalidade() {
-		return listaFuncionalidade;
+	
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setListaFuncionalidade(List<Funcionalidade> listaFuncionalidade) {
-		this.listaFuncionalidade = listaFuncionalidade;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public Set<PerfilFuncionalidade> getPerfilFuncionalidade() {
+		return perfilFuncionalidade;
+	}
+
+	public void setPerfilFuncionalidade(Set<PerfilFuncionalidade> perfilFuncionalidade) {
+		this.perfilFuncionalidade = perfilFuncionalidade;
 	}
 
 	public Integer getSituacao() {
