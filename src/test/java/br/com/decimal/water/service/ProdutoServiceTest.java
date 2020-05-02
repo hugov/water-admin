@@ -56,11 +56,11 @@ public class ProdutoServiceTest {
 		
 	}
 	
-	public Produto create(Categoria categoria, String descricao, int situacao) {
+	public Produto create(Categoria categoria, String nome, int situacao) {
 		Produto produto = new Produto();
-		produto.setDescricao(descricao);
+		produto.setNome(nome);
 		produto.setSituacao(situacao);
-		produto.setCategoriaId(categoria);
+		produto.setCategoria(categoria);
 		
 		return produto;
 	}

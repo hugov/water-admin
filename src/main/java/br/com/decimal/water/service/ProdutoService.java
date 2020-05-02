@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import br.com.decimal.water.entity.Categoria;
 import br.com.decimal.water.entity.Produto;
 import br.com.decimal.water.util.EntityManagerProvider;
 
@@ -23,14 +24,15 @@ public class ProdutoService implements Service<Integer, Produto> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Produto> list() {
-		LOG.info("Listando os registros de produtos cadastrados.");
-		
-		return em.createQuery("SELECT c FROM Produto c").getResultList();
+		return em.createQuery("SELECT p FROM Produto p").getResultList();
 	}
 
 	@Override
 	public void create(Produto entity) {
 		LOG.info("Criando um registro de {} .", entity);
+		
+		Categoria categoria = em.find(Categoria.class, entity.getCategoria().getId());
+		entity.setCategoria(categoria);
 		
 		em.getTransaction().begin();
 		em.persist(entity);
@@ -40,7 +42,7 @@ public class ProdutoService implements Service<Integer, Produto> {
 	@Override
 	public Produto retrieve(Integer id) {
 		Produto produto = em.find(Produto.class, id);
-		LOG.info("O id {} pertence ao registro de produto {} .", id, produto);
+		LOG.info("O id {} pertence ao registro de {} .", id, produto);
 
 		return produto;
 	}
@@ -50,7 +52,12 @@ public class ProdutoService implements Service<Integer, Produto> {
 		LOG.info("Atualizando o registro de {} ", entity);
 		
 		Produto produto = em.find(Produto.class, entity.getId());
-		produto.setDescricao(entity.getDescricao());
+		produto.setNome(entity.getNome());
+		produto.setPreco(entity.getPreco());
+		
+		Categoria categoria = em.find(Categoria.class, entity.getCategoria().getId());
+
+		produto.setCategoria(categoria);
 		produto.setSituacao(entity.getSituacao());
 		
 		em.getTransaction().begin();

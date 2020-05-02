@@ -3,7 +3,9 @@ package br.com.decimal.water.action;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
+import br.com.decimal.water.entity.Categoria;
 import br.com.decimal.water.entity.Produto;
+import br.com.decimal.water.service.CategoriaService;
 import br.com.decimal.water.service.ProdutoService;
 
 import java.util.List;
@@ -17,17 +19,23 @@ public class ProdutoAction extends ActionSupport implements Preparable {
 	private static final long serialVersionUID = 7445203433641887320L;
 
 	private ProdutoService service;
+	private CategoriaService categoriaService;
 
 	private Integer id;
 	private Produto produto;
 	private List<Produto> produtoList;
+	private List<Categoria> categoriaList;
 	private String submitType;
 
 	@Override
 	public void prepare() throws Exception {
 		service = new ProdutoService();
+		categoriaService = new CategoriaService();
+		
+		categoriaList = categoriaService.list();
+		
 	}
-
+	
 	public String list() {
 		produtoList = service.list();
 
@@ -85,6 +93,14 @@ public class ProdutoAction extends ActionSupport implements Preparable {
 
 	public void setProdutoList(List<Produto> produtoList) {
 		this.produtoList = produtoList;
+	}
+	
+	public List<Categoria> getCategoriaList() {
+		return categoriaList;
+	}
+
+	public void setCategoriaList(List<Categoria> categoriaList) {
+		this.categoriaList = categoriaList;
 	}
 
 	public String getSubmitType() {

@@ -53,7 +53,7 @@
             <result name="success" type="redirect">contaList</result>
         </action>
         
-        <!-- Cadastro de categoria -->
+        <!-- Cadastro de categoria de produto -->
         
         <action name="categoriaList" class="br.com.decimal.water.action.CategoriaAction" method="list">
             <result name="success">/page/categoria/list.jsp</result>
@@ -74,6 +74,33 @@
         
         <action name="categoriaDelete" class="br.com.decimal.water.action.CategoriaAction" method="delete">
             <result name="success" type="redirect">categoriaList</result>
+        </action>
+        
+        <!-- Cadastro de produto -->
+        
+        <action name="produtoList" class="br.com.decimal.water.action.ProdutoAction" method="list">
+            <result name="success">/page/produto/list.jsp</result>
+        </action>
+        
+        <action name="produtoPrepareCreate" class="br.com.decimal.water.action.ProdutoAction">
+            <result name="success">/page/produto/create.jsp</result>
+        </action>
+        
+        <action name="produtoCreate" class="br.com.decimal.water.action.ProdutoAction" method="create">
+            <result name="success" type="redirect">produtoList</result>
+        </action>
+        
+        <action name="produtoRetrieve" class="br.com.decimal.water.action.ProdutoAction" method="retrieve">
+            <result name="success">/page/produto/retrieve.jsp</result>
+        </action>
+        
+        <action name="produtoUpdate" class="br.com.decimal.water.action.ProdutoAction" method="update">
+            <result name="input">/page/produto/update.jsp</result>
+            <result name="success" type="redirect">produtoList</result>
+        </action>
+        
+        <action name="produtoDelete" class="br.com.decimal.water.action.ProdutoAction" method="delete">
+            <result name="success" type="redirect">produtoList</result>
         </action>
         
         <!-- Cadastro de funcionalidade -->

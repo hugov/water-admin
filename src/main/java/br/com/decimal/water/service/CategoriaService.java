@@ -23,8 +23,6 @@ public class CategoriaService implements Service<Integer, Categoria> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Categoria> list() {
-		LOG.info("Listando os registros de categorias cadastrados.");
-		
 		return em.createQuery("SELECT c FROM Categoria c").getResultList();
 	}
 
